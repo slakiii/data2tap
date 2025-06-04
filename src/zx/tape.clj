@@ -32,5 +32,9 @@
                                          data))))))        ; the pure data
 
 (comment
+  ((to-n-bytes 3) 58692)
+  ((to-n-bytes 3) 56129)
+  ((to-n-bytes 2) 6002)
+  (+ 68 (* 256 229))
   (create-block [0xf3 0xaf])
   :-)
