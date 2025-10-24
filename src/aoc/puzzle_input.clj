@@ -27,7 +27,8 @@
 (defn -main [& args]
   (let [[input-file output-file] args]
     (if output-file
-      (->> (file-to-lines input-file)
+      (->> input-file
+           (file-to-lines)
            (process-all-lines)
            (tape/create-block)
            (write-to-file output-file))
