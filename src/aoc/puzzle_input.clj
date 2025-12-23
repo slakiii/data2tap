@@ -10,9 +10,12 @@
        (mapv (tape/to-n-bytes 3))
        flatten))
 
+(defn ->bytes [line]
+  (map byte (str line "\n")))
+
 (defn process-all-lines [lines]
   (transduce
-    (map process-line)
+    (map ->bytes)
     concat
     lines))
 
@@ -22,7 +25,7 @@
 
 (defn file-to-lines [file-path]
   (with-open [rdr (io/reader file-path)]
-    (reduce conj [] (line-seq rdr))))
+    (into [] (line-seq rdr))))
 
 (defn -main [& args]
   (let [[input-file output-file] args]
@@ -36,4 +39,5 @@
 
 (comment
   (process-line "256 2")
+  (map byte "1234\n")
   :-)
