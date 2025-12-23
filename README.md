@@ -6,8 +6,8 @@ The code generates a _tap_ file which can be converted into a _wav_ file.
 ## Usage
 
     mkdir output
-    clojure -M -m aoc.puzzle-input resources/year2024_day01.txt output/data.tap
+    clojure -M -m aoc.puzzle-input resources/year2025_day01.txt output/data2501.tap
 
 Then you can use _tape2wav_ in Linux to get the _wav_ file:
 
-    tape2wav output/data.tap output/data.wav
+    tape2wav output/data2501.tap output/data2501.wav

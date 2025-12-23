@@ -11,13 +11,11 @@
        flatten))
 
 (defn ->bytes [line]
-  (map byte (str line "\n")))
+  (mapv byte (str line "\n")))
 
 (defn process-all-lines [lines]
-  (transduce
-    (map ->bytes)
-    concat
-    lines))
+  (into [] cat
+    (map ->bytes lines)))
 
 (defn write-to-file [file-name data]
   (with-open [w (io/output-stream file-name)]
@@ -33,11 +31,10 @@
       (->> input-file
            (file-to-lines)
            (process-all-lines)
-           (tape/create-block)
+           (tape/create-block "AoC-25-d01")
            (write-to-file output-file))
       (println "Next time call this with 2 file names, an input file and an output file."))))
 
 (comment
-  (process-line "256 2")
-  (map byte "1234\n")
+  (process-all-lines ["123" "456" "789"])
   :-)
